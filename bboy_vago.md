@@ -1,1 +1,0 @@
-b-boy vago la abuelita no le quiere dar la bendicion jjj 
