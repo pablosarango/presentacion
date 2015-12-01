@@ -1,0 +1,60 @@
+This is BibTeX, Version 0.99d (TeX Live 2015)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: Modelo_Beamer.aux
+The style file: IEEEannot.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: biblio.bib
+-- IEEEtranS.bst version 1.11 (2003/04/02) by Michael Shell.
+-- http://www.ctan.org/tex-archive/macros/latex/contrib/supported/IEEEtran/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+** Sorting version - not for use with work to be submitted to the IEEE.
+Warning--to sort, need author, organization, or key in build
+Warning--empty booktitle in lopez-pellicer_github_2015
+
+Done.
+You've used 2 entries,
+            4480 wiz_defined-function locations,
+            888 strings with 8261 characters,
+and the built_in function-call counts, 1527 in all, are:
+= -- 111
+> -- 39
+< -- 7
++ -- 20
+- -- 10
+* -- 93
+:= -- 233
+add.period$ -- 5
+call.type$ -- 2
+change.case$ -- 11
+chr.to.int$ -- 18
+cite$ -- 4
+duplicate$ -- 96
+empty$ -- 125
+format.name$ -- 11
+if$ -- 319
+int.to.chr$ -- 0
+int.to.str$ -- 2
+missing$ -- 19
+newline$ -- 32
+num.names$ -- 2
+pop$ -- 71
+preamble$ -- 1
+purify$ -- 9
+quote$ -- 2
+skip$ -- 94
+stack$ -- 0
+substring$ -- 54
+swap$ -- 62
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 6
+type$ -- 17
+warning$ -- 2
+while$ -- 6
+width$ -- 3
+write$ -- 40
+(There were 2 warnings)
