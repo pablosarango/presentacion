@@ -167,119 +167,197 @@ En cuanto a la prueba de aplicación en Heroku no es obligatorio alcanzar un mí
 \begin{frame}
 \frametitle{Heroku. Arquitectura}
 \centering WebSocket\\ \ \\
-El protocolo WebSocket es una tecnología que forma la base de aplicaciones web modernas en tiempo real.
-
 \includegraphics[width=10cm,height=5cm]{arquitectura/1.png}
+
 \end{frame}
 
 \begin{frame}
 	\frametitle{Heroku. Arquitectura}
 	\centering WebSocket\\ \ \\
-	. Se proporciona un canal bidireccional para la entrega de datos entre clientes y servidores. Te da la flexibilidad de una conexión TCP con el modelo de seguridad adicional y metadatos incorporados en el protocolo HTTP.
-	
-
+	\begin{itemize}
+		\item El protocolo WebSocket es una tecnología que forma la base de aplicaciones web modernas en tiempo real.
+		\item Proporciona un canal bidireccional para la entrega de datos entre clientes y servidores.
+		\item Da la flexibilidad de una conexión TCP con el modelo de seguridad adicional y metadatos incorporados en el protocolo HTTP.
+	\end{itemize}
 \end{frame}
+
 
 \begin{frame}
 \frametitle{Heroku. Arquitectura}
-Tiempo de respuesta HTTP\\ \ \\
-Después de que que la conexión dyno se haya establecido, las solicitudes HTTP tienen una ventaja de 30 segundos inicial en la que el proceso web debe devolver datos de respuesta (ya sea la respuesta completado o una cierta cantidad de datos de respuesta para indicar que el proceso está activo). Los procesos que no envían los datos de respuesta dentro de la ventaja inicial de 30 segundos verán un error.\\
+\centering Tiempo de respuesta HTTP\\ \ \\
+\flushleft Cuando una conexión dyno se haya establecido
+\begin{itemize}
+	\item Las solicitudes HTTP tienen una ventaja de 30 segundos iniciales para que el proceso web devuelva datos de respuesta (ya sea la respuesta completado o una cierta cantidad de datos que eindiqque que el proceso esta activo). 
+	\item Los procesos que no envían los datos de respuesta dentro de la ventaja inicial de 30 segundos verán un error.
+\end{itemize}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Heroku. Arquitectura}
-	El modelo de Proceso\\ \ \\
-El modelo de proceso Unix es una abstracción sencilla y potente para ejecutar programas de servidor. Aplicado a las aplicaciones web, el modelo de proceso nos da una manera única de pensar en dividir nuestras cargas de trabajo y la ampliación en el tiempo. La pila Heroku Cedar utiliza el modelo de proceso para la web, de los trabajadores y todos los otros tipos de dinamómetros..\\
+	\centering El modelo de Proceso\\ \ \\
+\begin{itemize}
+	\item Es una abstracción sencilla y potente para ejecutar programas de servidor. 
+	\item Aplicado a las aplicaciones web, el modelo de proceso nos da una manera única de pensar en dividir nuestras cargas de trabajo y la ampliación en el tiempo.
+	\item El modelo de procesos se utiliza para los dynos web, trabajadores y todos los otros tipos de dinamómetros.
+\end{itemize}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Heroku. Arquitectura}
-	Tipos de procesos vs dinamómetros\\ \ \\
-	Para ampliar, vamos a querer una plena comprensión de la relación entre tipos de proceso y dinamómetros. Un tipo de proceso es el prototipo de la que se instancian uno o más dinamómetros. Esto es similar a la forma en que una clase es el prototipo de la que se instancian uno o más objetos en la programación orientada a objetos.\\
+	\centering Tipos de procesos vs dinamómetros\\ \ \\
+	\begin{itemize}
+		\item Es un tipo de proceso que realiza prototipo de la que se instancian uno o más dinamómetros.
+		\item Esto es similar a la forma en que una clase es el prototipo de la cual se instancian uno o más objetos en la programación orientada a objetos.\\
+	\end{itemize}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Heroku. Arquitectura}
-	Tipos de procesos vs dinamómetros\\ \ \\
+	\centering Tipos de procesos vs dinamómetros\\ \ \\
 	\includegraphics[width=10cm,height=5cm]{arquitectura/tipodeproceso.jpg}
 \end{frame}
 
+\begin{frame}
+		\frametitle{Heroku. Arquitectura}
+	\centering Slug\\ \ \\
+	\begin{itemize}
+		\item Son comprimidos y copias preenvasadas de su aplicacion optimisados para la distribucion al dyno manager.
+		\item Cuando git push a Heroku, su código es recibido por el compilador babosa que transforma su repositorio en una babosa. Escalar una aplicación a continuación descargas y amplía la babosa a un banco de pruebas para su ejecución.
+	\end{itemize}
+\end{frame}
 
 \begin{frame}
-\frametitle{Heroku. Arquitectura}
-Dyno Sleep y Aplicación de recarga\\ \ \\
-Aplicaciones que utilizan el tipo de banco de pruebas libres tienen un \textit{sueño} y un comportamiento de recarga. Los Dinamómetros gratis \textit{dormirán} cuando un banco de pruebas web no recibe ningún tráfico web por un período de tiempo. Además, si un banco de pruebas libre supera una cuota de 18 horas de actividad durante una ventana de 24 horas, se verá obligada a recargar.
+		\frametitle{Heroku. Arquitectura}
+	\centering Dynos\\ \ \\
+	El compilador Slug es invocado por un git pre-recepción de gancho, que sigue estos pasos:
+	\begin{itemize}
+		\item Crear una copia nueva de la cabeza de la rama principal. 
+		\item Quite cualquier cosa especificada en un archivo .slugignore de nivel superior. 
+		\item Descarga, construir e instalar las dependencias locales como se especifica en el archivo de generación (por ejemplo, Gemfile, package.json, requirements.txt, pom.xml, etc.) con la herramienta de gestión de la dependencia con el apoyo del idioma (por ejemplo Bundler, npm, pip, Maven). 
+		\item Empaquete el archivo slug final.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+		\frametitle{Heroku. Arquitectura}
+	\centering Tamaño Slug\\ \ \\
+
+	\begin{itemize}
+		\item El tamaño máximo permitido slug (después de la compresión) es de 300 MB. 
+		\end{itemize}
+	\end{frame}
+
+\begin{frame}
+		\frametitle{Heroku. Arquitectura}
+	\centering Dynos\\ \ \\
+	\begin{itemize}
+		\item Un banco de pruebas(Dynos) es un contenedor ligero Linux que ejecuta un único comando especificado por el usuario.
+		\item  Un banco de pruebas puede ejecutar cualquier comando disponible en su entorno por defecto (lo que la oferta el Cedar stack) o en su aplicación slug (una copia comprimida y pre-envasados de su aplicacion y sus dependencias)
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Heroku. Arquitectura}
+	\centering Tipos de Dynos\\ \ \\
+	Heroku corre dinamómetros de tres maneras diferentes: 
+	\begin{itemize}
+		\item Dynos Web
+		\item Dynos Trabajadores
+		\item Dynos on-off
+	\end{itemize}
+\end{frame}
+\begin{frame}
+	\frametitle{Heroku. Arquitectura}
+	\centering Dynos Web\\ \ \\
+	\begin{itemize}
+		\item Los Dynos Web son dinamómetros de la "web" su tipo de proceso se define en su Procfile. Solamente los dinamómetros web reciben tráfico HTTP desde los routers de Heroku. 
+	\end{itemize}
+	
+\end{frame}
+\begin{frame}
+	\frametitle{Heroku. Arquitectura}
+	\centering Dynos Trabajadores\\ \ \\
+	\begin{itemize}
+		\item Puede hacer cualquier tipo de proceso que este declarado en su Procfile, distinto de "web". 
+		\item Los Dynos trabajadores se utilizan normalmente para trabajos en segundo plano, sistemas de colas y los trabajos programados. 
+		\item Puede tener varios tipos de Dynos trabajadores en la aplicación. Por ejemplo, uno para los trabajos urgentes y otra para trabajos de larga duración.
+	\end{itemize}
+\end{frame}
+\begin{frame}
+	\frametitle{Heroku. Arquitectura}
+	\centering Dynos One-Off \\ \ \\
+	\begin{itemize}
+		\item Los Dynos Ono-Off son dinamómetros temporales que se pueden ejecutar unifamiliares, o con su entrada / salida conectado a su terminal local.
+		\item Están cargados con su último lanzamiento. Pueden ser utilizados para manejar las tareas administrativas, como las migraciones de bases de datos y sesiones de consola. 
+		\item También pueden ser utilizadas para ejecutar ocasionalmente trabajo de fondo, con el Programador de Heroku.  
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Heroku. Arquitectura}
+	\centering Tipos de Dynos\\ \ \\
+	\includegraphics[width=10cm,height=5cm]{arquitectura/dynos.jpg}
+	
+\end{frame}
+\begin{frame}
+	\frametitle{Heroku. Arquitectura}
+	\centering Tamaño de los Dynos\\ \ \\
+	\begin{itemize}
+		\item Heroku acredita automáticamente cada aplicación con 750 dyno-hora gratuitas al mes, que están claramente identificados en su factura.
+		\item Esta asignación se puede utilizar para cualquier tipo de banco de pruebas de cualquier tamaño del banco de pruebas.
+		\item Tenga en cuenta que 2X dinamómetros consumen el doble de Dyno-horas libres comparado con las 750 dyno-hora 1X dynos, 2x se ejecutará de forma gratuita durante 375 horas. 
+		\item PX consumen 16 veces más Dyno-horas libres por horas como 1X dinamómetros. 
+	\end{itemize}
+	
+	
+\end{frame}
+\begin{frame}
+	\frametitle{Heroku. Arquitectura}
+	\centering Tamaño de Dynos\\ \ \\
+	\includegraphics[width=10cm,height=5cm]{arquitectura/dynoshora.jpg}
+	
 \end{frame}
 
 \begin{frame}
 \frametitle{Heroku. Arquitectura}
-Dyno Sleep y Aplicación de recarga\\ \ \\
-Una aplicación está activa si alguna parte de la aplicación se está ejecutando. Por ejemplo, si algunos de las siguientes condiciones son verdaderos:
+\centering Dyno Sleeping y App de Recharging\\ \ \\
+\begin{itemize}
+	\item Las Aplicaciones que utilizan el tipo de banco de pruebas libres tienen un sleeping(sueño) y un comportamiento de recarga.
+	\item  Los Dinamómetros gratis dormiran cuando un banco de pruebas no recibe ningún tráfico web por un período de tiempo.
+	\item  Si un banco de pruebas libre supera una cuota de 18 horas de actividad durante una ventana de 24 horas, se verá obligada a recargar.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Heroku. Arquitectura}
+\centering Dyno Sleeping y App de Recharging\\ \ \\
+Una aplicación está activa si alguna parte de la aplicación se está ejecutando. Por ejemplo, si algunos de las siguientes condiciones son verdaderas:
 \begin{itemize}
 \item Hay un banco de pruebas web que está recibiendo tráfico.
 \item Hay un banco de pruebas trabajador que se está ejecutando. 
-\item Un banco de pruebas este una sola vez en marcha. Por ejemplo, se inició a través de la CLI o el planificador.
+\item Un banco de pruebas on-off esta corriendo. Por ejemplo, se inició a través de la CLI o el planificador.
 \end{itemize}
 \end{frame}
 
 
 \begin{frame}
 	\frametitle{Heroku. Arquitectura}
-	Dormir\\ \ \\
-	Si una aplicación tiene un banco de pruebas web, y el dyno web no recibe ningún tráfico en un período de 30 minutos, el banco de pruebas web va a dormir. Además de dormir dyno web, el banco de pruebas trabajador (si está presente) también va a dormir. Si un banco de pruebas para dormir web recibe tráfico web, se activará de nuevo después de un breve retraso. Si la aplicación tiene un banco de pruebas trabajador que fue a dormir antes de ampliase, será ampliado de nuevo también.
-	
-
+	\centering Sleeping\\ \ \\
+	\begin{itemize}
+		\item Si una aplicación tiene un Dyno web y no recibe ningún tráfico en un período de 30 minutos, el Dyno web va a dormir.
+		\item Además de dormir el dyno web, el Dyno trabajador (si está presente) también va a dormir. 
+		\item Si un Dyno web recibe tráfico, se activará de nuevo después de un breve retraso. 
+		\item Si la aplicación tiene Dyno trabajador que fue a dormir antes de ampliase, será ampliado de nuevo también.
+	\end{itemize}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Heroku. Arquitectura}
-	Recarga\\ \ \\
-Aplicaciones en el estado "recarga" se cierran durante 6 horas. Si un banco de pruebas (ya sea web, trabajador o one-off) se ejecutarán durante este período de tiempo. Cualquier tráfico web recibida en este estado devolverá una página de error.
-\end{frame}
-
-\begin{frame}
-	\frametitle{Heroku. Arquitectura}
-	Dynos\\ \ \\
-	Un banco de pruebas es un contenedor ligero Linux que ejecuta un único comando especificado por el usuario. Un banco de pruebas puede ejecutar cualquier comando disponible en su entorno por defecto (lo que la oferta de la pila Cedar) o en posta de su aplicación (una copia comprimida y pre-envasados de su aplicación y sus dependencias). 
-\end{frame}
-
-\begin{frame}
-	\frametitle{Heroku. Arquitectura}
-	Tipos de Dynos\\ \ \\
-Heroku corre dinamómetros de tres maneras diferentes: 
-
-Web Dynos: dinamómetros Web son dinamómetros de la "web" es un tipo de proceso que se define en su Procfile. Solamente los dinamómetros web reciben tráfico HTTP desde los routers de Heroku. 
-
-\end{frame}
-\begin{frame}
-	\frametitle{Heroku. Arquitectura}
-	Tipos de Dynos\\ \ \\
-Trabajadores Dynos: Trabajador dinamómetros puede ser de cualquier tipo de proceso declarado en su Procfile, distinto de "web". Dinamómetros trabajadores se utilizan normalmente para trabajos en segundo plano, sistemas de colas y los trabajos programados. Puede tener varios tipos de dinamómetros de trabajadores en la aplicación. Por ejemplo, uno para los trabajos urgentes y otra para trabajos de larga duración. 
-	
-\end{frame}
-\begin{frame}
-	\frametitle{Heroku. Arquitectura}
-	Tipos de Dynos\\ \ \\
-One-off Dynos: dinamómetros Ono-off son dinamómetros temporales que se pueden ejecutar unifamiliares, o con su entrada / salida conectado a su terminal local. Están cargados con su último lanzamiento. Pueden ser utilizados para manejar las tareas administrativas, como las migraciones de bases de datos y sesiones de consola. También pueden ser utilizadas para ejecutar ocasionalmente trabajo de fondo, con el Programador de Heroku.  
-	
-\end{frame}
-\begin{frame}
-	\frametitle{Heroku. Arquitectura}
-	Tipos de Dynos\\ \ \\
-	  \includegraphics[width=10cm,height=5cm]{arquitectura/dynos.jpg}
-	
-\end{frame}
-\begin{frame}
-	\frametitle{Heroku. Arquitectura}
-	Tamaño de los Dynos\\ \ \\
-	Heroku acredita automáticamente cada aplicación con 750 dyno-hora gratuitas al mes, que están claramente identificados en su factura. Esta asignación se puede utilizar para cualquier tipo de banco de pruebas (es decir, web, trabajador, consola), de cualquier tamaño del banco de pruebas. 
-	
-\end{frame}
-\begin{frame}
-	\frametitle{Heroku. Arquitectura}
-	Tipos de Dynos\\ \ \\
-	\includegraphics[width=10cm,height=5cm]{arquitectura/dynoshora.jpg}
-	
+	\centering Recharging\\ \ \\
+	\begin{itemize}
+		\item Las aplicaciones en el estado "recarga" se cierran durante 6 horas. 
+		\item Si un Dyno (ya sea web, trabajador o one-off) se ejecutarán durante este período de tiempo.Cualquier tráfico web recibida en este estado devolverá una página de error.
+	\end{itemize}
 \end{frame}
 
 \begin{frame}

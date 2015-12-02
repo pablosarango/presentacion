@@ -18,13 +18,6 @@
 \fi
 #2}}
 
-\bibitem{build}
-\BIBentryALTinterwordspacing
-``Build apps on {Heroku}: the innovative {PaaS} \& leading dev experience.''
-  [Online]. Available: \url{https://www.heroku.com/platform}
-\BIBentrySTDinterwordspacing
-
-
 \bibitem{lopez-pellicer_github_2015}
 \BIBentryALTinterwordspacing
 F.~J. Lopez-Pellicer, R.~Béjar, M.~A. Latre, J.~Nogueras-Iso, and F.~J.
