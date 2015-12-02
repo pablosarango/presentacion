@@ -2,7 +2,7 @@
 \usetheme{Gelugor}
 \usepackage{hyperref}
 \usepackage[utf8]{inputenc}
-\usepackage[spanish]{babel}
+\usepackage[spanish]
 \usepackage[default]{droidserif}
 \usepackage{ragged2e}
 
@@ -17,7 +17,7 @@ Luís Solano AFINF7205
 Jefferson Vera ECINF7434.
 }
 \date{\today}
-\institute{Ingeniería en Sistemas\\ pgsarangou@unl.edu.ec}
+\institute{Ingeniería en Sistemas\\}
 
 \begin{document}
 \justifying
@@ -34,11 +34,50 @@ Jefferson Vera ECINF7434.
 		\begin{frame}
 			\frametitle{Introducción}
 			%\framesubtitle{Tema}
-			A continuación se mostrará el despliegue de una aplicación sencilla a partir de GitHub. Para el despliegue se ha usado Heroku. Heroku ofrece un servicio Paas (Plataform as a Service) en donde actualmente se pueden desplegar aplicaciones desarrolladas en Ruby, Node.js, Java, Python, Clojure y Scala. En Heroku definen una aplicacion como el código fuente de la aplicación junto a sus dependencias, indicadas, por ejemplo, en el
-			Gemfile de Ruby o el pom.xml de Maven. Inicialmente, a cada aplicación se le asigna un dyno, que es como llaman en Heroku a sus servidores ligeros donde ejecutan el comando indicado por el usuario. El uso de dynos permite una gran escalabilidad a nuestra aplicación, ya que en cualquier momento podemos contratar más o menos dynos según las
-			necesidades que tengamos. \cite{lopez-pellicer_github_2015}.
+			A continuación se mostrará el despliegue de una aplicación sencilla a partir de GitHub. Para el despliegue se ha usado Heroku: Una Plataforma como Servicio (PaaS).\\ \ \\
+			
+			Es un servicio de Hosting en la nube(los clientes no tienen que contar con infraestructura, el tiempo de procesamiento y almacenamiento se le renta a un tercero).\\ \ \\
+			
+			Fue Fundada en 2007 y adquirida por Salesforce.com en 2011.
+		\end{frame}
+		
+		\subsection{Características}
+		\begin{frame}			
+			\frametitle{Características}\\
+			\begin{itemize}
+			\item Servicio basados en la nube de Amazon Web Services(ECS,S3, etc.)
+			\item La implementacion se hace a traves de Git.
+			\item Gratuito(hasta 5 MB de espacio para base de datos, 50MB para todos los archivos incluyendo repositorios Git).
+			\item En la aplicacion ”compilada” nos brinda un Máximo de 100MB.
+			\end{itemize}
+		\end{frame}	
+		
+		\subsection{Características}
+		\begin{frame}
+			\frametitle{Características}\\
+			\begin{itemize}
+			\item Esta basada en SO Debian y Ruby 1.8.X.
+			\item Bajo costo para apps pequeñas.
+			\item Ofrece manejo sencillo de apps complejas.
+			\item La unidad básica de procesamiento son los Dynos, costo  0,05 USD por hora o 0,10 USD por hora.
+			\end{itemize}
+		\end{frame}
+		
+		\subsection{Clientes}
+		\begin{frame}
+			\frametitle{Clientes}
+			\begin{itemize}
+			\item GitHub.
+			\item Code for America.
+			\item TED.
+			\item Facebook.
+			\item MailChimp.
+			\item Entre otros.
+			\end{itemize}
+		\end{frame}
+			
+			 
 \end{frame}
-
 \subsection{Agenda}
 \begin{frame}
 \frametitle{Agenda}
